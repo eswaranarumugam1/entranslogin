@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { TitleContext } from './TItleProvider';
+import { TitleContext } from './TitleProvider';
 
 const Titlewraper = ({ Component, title }) => {
   const { setTitle } = useContext(TitleContext);

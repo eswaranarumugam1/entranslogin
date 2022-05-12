@@ -10,7 +10,7 @@ import styled from "@emotion/styled";
 import MuiAppBar from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
 import { Outlet } from "react-router-dom";
-import { TitleContext } from "../hoc/titleWraper/TItleProvider";
+import { TitleContext } from "../hoc/titleWraper/TitleProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/actions";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
