@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import AppLayout from './pages/layout';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Titleprovider from './components/hoc/titleWraper/TItleProvider';
+import Titleprovider from './components/hoc/titleWraper/TitleProvider';
 
 function App() {
   const theme = createTheme();
