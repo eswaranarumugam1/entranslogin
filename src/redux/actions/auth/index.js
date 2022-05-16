@@ -14,7 +14,6 @@ actions.logInProgress = (payload) => {
   };
 };
 actions.logInSuccess = (data) => {
-  console.log("useruseruser", data);
   return {
     type: LOGIN_IN_SUCCESS,
     payload: data,

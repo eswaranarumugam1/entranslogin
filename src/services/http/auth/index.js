@@ -3,8 +3,8 @@ import { tokenValidation } from "../../intreceptorse";
 
 const baseURL =
   process.env.REACT_APP_MODE === "dev"
-    ? process.env.REACT_APP_API_URL
-    : window.location.hostname;
+    ? '52.22.238.17'
+    : '52.22.238.17';
 
 const authInstance = axios.create({
   baseURL: `http://${baseURL}:3000`,

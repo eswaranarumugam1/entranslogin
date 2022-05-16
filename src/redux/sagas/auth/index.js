@@ -2,12 +2,14 @@ import { takeEvery, call, put } from "redux-saga/effects";
 import { LOGIN_IN_PROGRESS } from "../../types/auth";
 import { authActions } from "../../actions";
 import { logIn } from "../../../services/http/auth";
-import { setToken } from "../../../utilz/auth";
+import { setToken, setRefreshToken, setUser } from "../../../utilz/auth";
 
 function* logInProgress({ payload }) {
   try {
     let { data } = yield call(logIn, payload);
     setToken(data?.data.access_token);
+    setRefreshToken(data?.data.refresh_token);
+    setUser(data?.data.users);
     yield put(
       authActions.logInSuccess({
         data: data.data,

@@ -16,15 +16,13 @@ export default function LoginForm() {
   const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    console.log("datalkjdslfdlsda", data);
+  const onSubmitt = (data) => {
     let formData = new URLSearchParams();
     formData.append("email", data.email);
     formData.append("password", data.password);
     let payload = { formData };
     dispatch(authActions.logInProgress(payload));
   };
-  console.log("datassasdasdas", auth);
   return (
     <Grid xs={12} sm={12} lg={12}>
       <Box
@@ -45,7 +43,7 @@ export default function LoginForm() {
           </span>
         )}
         <Box>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form onSubmit={handleSubmit(onSubmitt)} noValidate>
             <Controller
               name="email"
               control={control}
