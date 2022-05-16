@@ -9,10 +9,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import styled from "@emotion/styled";
 import MuiAppBar from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { TitleContext } from "../hoc/titleWraper/TitleProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/actions";
+import { INITIATE_LOGOUT } from "../../redux/types/auth";
+
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 const Sidebar = (props) => {
@@ -66,11 +68,23 @@ const Sidebar = (props) => {
     },
   }));
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const loginStatus = useSelector((state) => state.auth.isLoggedIn);
+
   const logout = () => {
-    localStorage.removeItem("logintoken");
-    dispatch(authActions.logOut());
+    dispatch({ type: INITIATE_LOGOUT });
+    if (!loginStatus || loginStatus) {
+      navigate("/");
+    }
   };
+
+  // const dispatch = useDispatch();
+  // const Logout = () => {
+  //   localStorage.removeItem("logintoken");
+  //   dispatch(authActions.logOut());
+  // };
   const { title } = useContext(TitleContext);
   return (
     <Fragment>

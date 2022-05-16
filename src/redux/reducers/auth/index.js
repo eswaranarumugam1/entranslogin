@@ -35,6 +35,7 @@ export const authReducer = (
         error: false,
         success: true,
         isLoggedIn: true,
+
         userInfo: payload.data.users,
       };
 

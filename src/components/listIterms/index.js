@@ -2,8 +2,10 @@ import * as React from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MENUS } from "../../pages/layout/menus";
+import { useSelector } from "react-redux";
+
 import "../../styles/app.css";
 
 import LoginPage from "../../pages/auth/login";
@@ -13,13 +15,22 @@ import { INITIATE_LOGOUT } from "../../redux/types/auth";
 
 export default function MainListItems() {
   const [open, setOpen] = React.useState(false);
+  const [logOut, setLogOut] = React.useState(false);
 
   function handleClick() {
     setOpen(!open);
   }
   const dispatch = useDispatch();
-  const logout = () => {
+  const navigate = useNavigate();
+  const loginStatus = useSelector((state) => state.auth.isLoggedIn);
+
+  const logoutt = () => {
     dispatch({ type: INITIATE_LOGOUT });
+    if (!loginStatus || loginStatus) {
+      navigate("/");
+    }
+
+    // dispatch({ type: INITIATE_LOGOUT });
   };
   return (
     <React.Fragment>
@@ -31,7 +42,7 @@ export default function MainListItems() {
           <ListItemText primary={title} />
         </ListItemButton>
       ))}
-      <ListItemButton onClick={logout}>
+      <ListItemButton onClick={logoutt}>
         <ListItemIcon>
           <PowerSettingsNewIcon />
         </ListItemIcon>
